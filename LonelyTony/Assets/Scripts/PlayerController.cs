@@ -1,0 +1,54 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour {
+
+	public float moveSpeed;			//Speed of the Player
+	public float jumpForce;			//Jump Height of the Player
+
+	//moveSpeed and jumpForce can be modified in the Player Inspector 
+
+	private Rigidbody2D myRigidbody;	//Object this script is working with
+
+	public bool isOnGround;
+	public LayerMask whatIsGround;
+
+	private Collider2D myCollider;
+
+	private Animator playerAnimator;
+
+
+
+	// Use this for initialization
+	void Start () {
+		myRigidbody = GetComponent<Rigidbody2D> (); //Get the Player Object
+
+		myCollider = GetComponent<Collider2D> ();	// find the collider that is attached to the object
+
+		playerAnimator = GetComponent<Animator> ();
+
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+		isOnGround = Physics2D.IsTouchingLayers (myCollider, whatIsGround); // checks if player's collider is touching ground's collider
+
+
+		myRigidbody.velocity = new Vector2 (moveSpeed, myRigidbody.velocity.y); //X,Y Vector
+	
+
+		//if Space is pressed or Mouse is pressed -> Jump
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonDown (0)) {
+
+			if (isOnGround) {
+				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);
+			}
+
+		}
+
+		playerAnimator.SetBool ("IsOnGround", isOnGround); // connect Animator parameter to our variable isOnGround
+
+	}
+}
