@@ -523,7 +523,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -540,9 +540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecc2816997dcd7469b9289d2dad28c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  jumpForce: 5
-  isOnGround: 0
+  moveSpeed: 10
+  jumpForce: 10
+  jumpTime: 0.25
+  isOnGround: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -1313,6 +1314,34 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+--- !u!1 &1476455625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1476455626}
+  m_Layer: 0
+  m_Name: maxHeightPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1476455626
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476455625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1890609117}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1546458837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,14 +1726,16 @@ MonoBehaviour:
   thePlatform: {fileID: 1397068931690558, guid: e95107f9c3cda4162b0dc8594acd8276,
     type: 2}
   generationPoint: {fileID: 1068076367}
-  distanceMin: 1
-  distanceMax: 7
+  distanceMin: 2
+  distanceMax: 4
   platfReuse: {fileID: 0}
   reusePlatforms:
   - {fileID: 1213117304}
   - {fileID: 185338312}
   - {fileID: 1258515958}
   - {fileID: 1904282690}
+  maxHeightPoint: {fileID: 1476455626}
+  maxChange: 3
 --- !u!4 &1890609117
 Transform:
   m_ObjectHideFlags: 0
@@ -1714,7 +1745,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.27, y: -4.23, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1476455626}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

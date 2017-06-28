@@ -8,13 +8,21 @@ public class PlatformGenerator : MonoBehaviour {
 	public Transform generationPoint;		//the generation point
 	private float distanceBetween;			//the distance between two platforms
 	private float platformWidth;			//platform width
+
 	public float distanceMin;				//minimal distance
 	public float distanceMax;				//maximal distance
+
 	public PlatformReuse platfReuse;		//Instance of PlatformReuse
 
 	private int platformSelector;			//chooses the platform with a random number
 	private float[] platformWidths;		
 	public PlatformReuse[] reusePlatforms;
+
+	private float minHeight;
+	public Transform maxHeightPoint;
+	private float maxHeight;
+	public float maxChange;					//need a maximum number of Change 
+	private float heightChange;
 
 
 	// Use this for initialization
@@ -24,6 +32,10 @@ public class PlatformGenerator : MonoBehaviour {
 		for (int i = 0; i < reusePlatforms.Length; i++) {
 			platformWidths [i] = reusePlatforms [i].platform.GetComponent<BoxCollider2D> ().size.x;		//gets the widths of the different platforms
 		}//end for
+
+		minHeight = transform.position.y;
+		maxHeight = maxHeightPoint.position.y;
+
 		
 	}
 	
@@ -37,9 +49,17 @@ public class PlatformGenerator : MonoBehaviour {
 
 			platformSelector = Random.Range (0, reusePlatforms.Length);
 
+			heightChange = transform.position.y + Random.Range (maxChange, -maxChange);
+
+			if (heightChange > maxHeight) {							//keeping the platforms in the screen
+				heightChange = maxHeight;
+			} else if (heightChange < minHeight) {
+				heightChange = minHeight;
+			}
+
 			//get the new Position for the GenerationPoint
 			transform.position = new Vector3 (transform.position.x + (platformWidths[platformSelector] / 2 ) + distanceBetween,
-				transform.position.y, transform.position.z);											
+				heightChange, transform.position.z);											
 
 
 			GameObject newPlatform = reusePlatforms[platformSelector].GetReuseablePlatform();	//get a platform that is inactive and reuse it

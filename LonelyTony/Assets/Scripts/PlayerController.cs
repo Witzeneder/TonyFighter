@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour {
 	public float moveSpeed;			//Speed of the Player
 	public float jumpForce;			//Jump Height of the Player
 
+	public float jumpTime;			//to configure the jump boost
+	private float jumpTimeCounter; 	//controll the player
+
 	//moveSpeed and jumpForce can be modified in the Player Inspector 
 
 	private Rigidbody2D myRigidbody;	//Object this script is working with
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour {
 
 		playerAnimator = GetComponent<Animator> ();
 
+		jumpTimeCounter = jumpTime;
+
 	}
 
 	// Update is called once per frame
@@ -40,7 +45,7 @@ public class PlayerController : MonoBehaviour {
 	
 
 		//if Space is pressed or Mouse is pressed -> Jump
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonDown (0)) {
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonDown (0)) {				//Click Button
 
 			if (isOnGround) {
 				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);
@@ -48,7 +53,29 @@ public class PlayerController : MonoBehaviour {
 
 		}
 
+		if (Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) {						//pressed Button
+
+			if (jumpTimeCounter > 0) {
+				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);		//if pressed longer you can continue jumping
+				jumpTimeCounter -= Time.deltaTime;											//decrease jumpTimeCounter so it gets < 0 and stop jump
+			}
+		}
+
+		if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {					//Release Button
+
+			jumpTimeCounter = 0;															//when stop pressing stop jumping
+
+		}
+
+			if(isOnGround) {																//if again on Ground reset Counter
+
+				jumpTimeCounter = jumpTime;
+
+			}
+			
 		playerAnimator.SetBool ("IsOnGround", isOnGround); // connect Animator parameter to our variable isOnGround
 
-	}
+			}
 }
+
+
