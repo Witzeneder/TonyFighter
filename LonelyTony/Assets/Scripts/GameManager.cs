@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
 
 	private PlatformDestroyer[] generatedPlatforms;		//the array to store all platforms the programm has generated
 
+	private ScoreManager scoreManager;					//for the scoreCounter
+
 	//-------------------------------------------------------------------------------------------------------//
 
 	// Use this for initialization
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour {
 		platformStartPoint = platGenerator.position;
 		playerStartPoint = player.transform.position;
 		//backroundStartPoint = backround.transform.position;
+
+		scoreManager = FindObjectOfType<ScoreManager> ();
 	}
 
 	// Update is called once per frame
@@ -35,6 +39,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public IEnumerator RestartGameCoroutine() {
+
+		scoreManager.counter = false;									//don't count the score anymore when dead
 		player.gameObject.SetActive(false);								//set player inactive
 		yield return new WaitForSeconds(0.5f);							//wait half a second
 		generatedPlatforms = FindObjectsOfType<PlatformDestroyer>();
@@ -46,6 +52,9 @@ public class GameManager : MonoBehaviour {
 		platGenerator.position = platformStartPoint;					//set the platformgen to the start 
 		//backround.transform.position = backroundStartPoint;
 		player.gameObject.SetActive(true);								//set player active again
+
+		scoreManager.scoreCount = 0;									//set score back to 0
+		scoreManager.counter = true;									//start to count again
 
 
 	}

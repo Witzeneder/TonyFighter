@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f825e7afedc138a4f8af973723006afa
-timeCreated: 1498646567
+guid: 7b9b5d655c9ec4722b58268ca785541f
+timeCreated: 1498685407
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,10 +9,11 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Doodle_Head
+  fontName: From Cartoon Blocks
   fontNames:
-  - Doodle_Head
-  fallbackFontReferences: []
+  - From Cartoon Blocks
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a6b41fa09c9f54f8fbf8c09b9f0c454e, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
