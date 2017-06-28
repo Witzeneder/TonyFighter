@@ -21,7 +21,7 @@ public class PlatformDestroyer : MonoBehaviour {
 		//if transform position is past the PlatformDestructionPoint
 		if (transform.position.x < platformDestruction.transform.position.x) {
 
-			Destroy (gameObject);
+			gameObject.SetActive (false);						//Instead of deleting we just deactivate for later reuse
 		}
 		
 	}
