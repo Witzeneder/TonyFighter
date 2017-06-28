@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: f825e7afedc138a4f8af973723006afa
+timeCreated: 1498646567
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Doodle_Head
+  fontNames:
+  - Doodle_Head
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
