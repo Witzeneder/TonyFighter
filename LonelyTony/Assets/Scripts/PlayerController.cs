@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float moveSpeed;					//Speed of the Player
-	public float speedMultiplier; 			//for speed up
-	public float speedPointMultiplier;		//for variable distance for speed increase points
-	public float speedUpPoint;				//distance when speed becomes increased
-	private float countSpeedIncreases;		//= how often the speed has been increased
-
+	public float moveSpeed;						//Speed of the Player
+	private float moveSpeedStore;				//to set the moveSpeed back to normal after death
+	public float speedMultiplier; 				//for speed up
+	public float speedPointMultiplier;			//for variable distance for speed increase points
+	public float speedUpPoint;					//distance when speed becomes increased
+	private float speedUpPointStore;			//fore set the speedUpPoint back to normal after death
+	private float countSpeedIncreases;			//= how often the speed has been increased
+	private float countSpeedIncreasesStore;		//set back how often the speed has been inceased
 
 	public float jumpForce;					//Jump Height of the Player
 	public float jumpTime;					//to configure the jump boost
@@ -32,10 +34,14 @@ public class PlayerController : MonoBehaviour {
 
 	private Animator playerAnimator;
 
+	public GameManager gameManager;
 
+
+	//-------------------------------------------------------------------------------------------------------//
 
 	// Use this for initialization
 	void Start () {
+
 		myRigidbody = GetComponent<Rigidbody2D> (); //Get the Player Object
 
 		/*Used for climbing walls
@@ -48,10 +54,16 @@ public class PlayerController : MonoBehaviour {
 
 		countSpeedIncreases = speedUpPoint;			//otherwise the speed would already increase at the start
 
+		moveSpeedStore = moveSpeed;
+		speedUpPointStore = speedUpPoint;
+		countSpeedIncreasesStore = countSpeedIncreases;
+
 	}
 
 	// Update is called once per frame
 	void Update () {
+
+
 
 		/*Used for climbing walls
 		isOnGround = Physics2D.IsTouchingLayers (myCollider, whatIsGround); // checks if player's collider is touching ground's collider
@@ -103,6 +115,17 @@ public class PlayerController : MonoBehaviour {
 		playerAnimator.SetBool ("IsOnGround", isOnGround); // connect Animator parameter to our variable isOnGround
 
 			}
+
+	void OnCollisionEnter2D (Collision2D other) {
+		if (other.gameObject.tag == "killbox") {
+			Debug.Log ("Player dead");							//Console shows Player dead
+			gameManager.RestartGame ();							//Restart method from GameManager
+			moveSpeed = moveSpeedStore;							//set the moveSpeed back		
+			speedUpPoint = speedUpPointStore;					//set the speedUpPoint back
+			countSpeedIncreases = countSpeedIncreasesStore;
+		}
+	}
+
 }
 
 
