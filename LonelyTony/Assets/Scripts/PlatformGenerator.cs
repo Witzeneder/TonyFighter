@@ -6,8 +6,10 @@ public class PlatformGenerator : MonoBehaviour {
 
 	public GameObject thePlatform; 		//platform that is generated
 	public Transform generationPoint;	//the generation point
-	public float distanceBetween;		//the distance between two platforms
+	private float distanceBetween;		//the distance between two platforms
 	private float platformWidth;		//platform width
+	public float distanceMin;			//minimal distance
+	public float distanceMax;			//maximal distance
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +21,9 @@ public class PlatformGenerator : MonoBehaviour {
 	void Update () {
 
 		if (transform.position.x < generationPoint.position.x) {
+
+			//Random Number between distanceMin & distanceMax
+			distanceBetween = Random.Range (distanceMin,distanceMax);
 
 			//get the new Position for the GenerationPoint
 			transform.position = new Vector3 (transform.position.x + platformWidth + distanceBetween,
