@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 	public float jumpTime;					//to configure the jump boost
 	private float jumpTimeCounter; 			//controll the player
 
+	private bool isJumping;			// true if player is currently in the air
+
 
 
 	//moveSpeed and jumpForce can be modified in the Player Inspector 
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour {
 		playerAnimator = GetComponent<Animator> ();
 
 		jumpTimeCounter = jumpTime;
+		isJumping = false;
 
 		countSpeedIncreases = speedUpPoint;			//otherwise the speed would already increase at the start
 
@@ -88,11 +91,12 @@ public class PlayerController : MonoBehaviour {
 
 			if (isOnGround) {
 				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);
+				isJumping = true;
 			}
 
 		}
 
-		if (Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) {						//pressed Button
+		if ((Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) && isJumping) {			//pressed Button
 
 			if (jumpTimeCounter > 0) {
 				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);		//if pressed longer you can continue jumping
@@ -103,6 +107,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {					//Release Button
 
 			jumpTimeCounter = 0;															//when stop pressing stop jumping
+			isJumping = false;
 
 		}
 
