@@ -40,4 +40,8 @@ public class ScoreManager : MonoBehaviour {
 		score.text = "Score: " + Mathf.Round(scoreCount);				//Mathf.Round -> rounds the number without . digits
 		highscore.text = "Highscore: " + Mathf.Round(highscoreCount);
 	}
+
+	public void addCoinScore(int increase) {
+		scoreCount += increase;
+	}
 }
