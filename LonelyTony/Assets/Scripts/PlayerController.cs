@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;						//Speed of the Player
 	private float moveSpeedStore;				//to set the moveSpeed back to normal after death
-	public float speedMultiplier; 				//for speed up
+	public float speedMultiplier; 				//for speed ups
 	public float speedPointMultiplier;			//for variable distance for speed increase points
 	public float speedUpPoint;					//distance when speed becomes increased
-	private float speedUpPointStore;			//fore set the speedUpPoint back to normal after death
+	private float speedUpPointStore;			//for setting the speedUpPoint back to normal after death
 	private float countSpeedIncreases;			//= how often the speed has been increased
 	private float countSpeedIncreasesStore;		//set back how often the speed has been inceased
 
@@ -116,12 +116,17 @@ public class PlayerController : MonoBehaviour {
 
 			}
 
+
+	/*
+	 * Predefined unity function, used to recognize if 2 colliders touch each other
+	 * Here: if player falls down and dies
+	 */
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.tag == "killbox") {
 			Debug.Log ("Player dead");							//Console shows Player dead
 			gameManager.RestartGame ();							//Restart method from GameManager
-			moveSpeed = moveSpeedStore;							//set the moveSpeed back		
-			speedUpPoint = speedUpPointStore;					//set the speedUpPoint back
+			moveSpeed = moveSpeedStore;							//reset the moveSpeed		
+			speedUpPoint = speedUpPointStore;					//reset the speedUpPoint
 			countSpeedIncreases = countSpeedIncreasesStore;
 		}
 	}

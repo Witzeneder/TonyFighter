@@ -35,9 +35,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void RestartGame() {
-		StartCoroutine ("RestartGameCoroutine");
+		StartCoroutine ("RestartGameCoroutine");		// start coroutine by its name
 	}
 
+	/*
+	 * This coroutine is being used to restart the game smoothly after gameover
+	 * --> make the player invisible
+	 * --> add some time delay so that the game does not restart immediately
+	 * --> make player visible again
+	 */
 	public IEnumerator RestartGameCoroutine() {
 
 		scoreManager.counter = false;									//don't count the score anymore when dead
