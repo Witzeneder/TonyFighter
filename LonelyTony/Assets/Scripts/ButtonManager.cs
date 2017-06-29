@@ -11,6 +11,12 @@ public class ButtonManager : MonoBehaviour {
         SceneManager.LoadScene(endlessGame);
     }
 
+    public void LevelButton(string level)
+    {
+
+        SceneManager.LoadScene(level);
+    }
+
     public void ExitAppButton()
     {
         Application.Quit();
