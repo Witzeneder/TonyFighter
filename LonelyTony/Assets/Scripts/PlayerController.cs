@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			//if ((Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) && isJumping) {			//pressed Button
-			if (Input.GetTouch (0).phase == TouchPhase.Moved || Input.GetTouch (0).phase == TouchPhase.Stationary) {
+			if ((Input.GetTouch (0).phase == TouchPhase.Moved || Input.GetTouch (0).phase == TouchPhase.Stationary) && isJumping) {
 
 				if (jumpTimeCounter > 0) {
 					myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);		//if pressed longer you can continue jumping
