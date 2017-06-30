@@ -6,16 +6,18 @@ public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;						//Speed of the Player
 	private float moveSpeedStore;				//to set the moveSpeed back to normal after death
-	public float speedMultiplier; 				//for speed up
+	public float speedMultiplier; 				//for speed ups
 	public float speedPointMultiplier;			//for variable distance for speed increase points
 	public float speedUpPoint;					//distance when speed becomes increased
-	private float speedUpPointStore;			//fore set the speedUpPoint back to normal after death
+	private float speedUpPointStore;			//for setting the speedUpPoint back to normal after death
 	private float countSpeedIncreases;			//= how often the speed has been increased
 	private float countSpeedIncreasesStore;		//set back how often the speed has been inceased
 
 	public float jumpForce;					//Jump Height of the Player
 	public float jumpTime;					//to configure the jump boost
 	private float jumpTimeCounter; 			//controll the player
+
+	private bool isJumping;			// true if player is currently in the air
 
 
 
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour {
 		playerAnimator = GetComponent<Animator> ();
 
 		jumpTimeCounter = jumpTime;
+		isJumping = false;
 
 		countSpeedIncreases = speedUpPoint;			//otherwise the speed would already increase at the start
 
@@ -84,44 +87,56 @@ public class PlayerController : MonoBehaviour {
 	
 
 		//if Space is pressed or Mouse is pressed -> Jump
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonDown (0)) {				//Click Button
+		//if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonDown (0)) {				//Click Button
+		if (Input.touchCount > 0) {
+			if (Input.GetTouch (0).phase == TouchPhase.Began) {
 
-			if (isOnGround) {
-				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);
-			}
-
-		}
-
-		if (Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) {						//pressed Button
-
-			if (jumpTimeCounter > 0) {
-				myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);		//if pressed longer you can continue jumping
-				jumpTimeCounter -= Time.deltaTime;											//decrease jumpTimeCounter so it gets < 0 and stop jump
-			}
-		}
-
-		if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {					//Release Button
-
-			jumpTimeCounter = 0;															//when stop pressing stop jumping
-
-		}
-
-			if(isOnGround) {																//if again on Ground reset Counter
-
-				jumpTimeCounter = jumpTime;
+				if (isOnGround) {
+					myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);
+					isJumping = true;
+				}
 
 			}
-			
+
+			//if ((Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) && isJumping) {			//pressed Button
+			if (Input.GetTouch (0).phase == TouchPhase.Moved || Input.GetTouch (0).phase == TouchPhase.Stationary) {
+
+				if (jumpTimeCounter > 0) {
+					myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);		//if pressed longer you can continue jumping
+					jumpTimeCounter -= Time.deltaTime;											//decrease jumpTimeCounter so it gets < 0 and stop jump
+				}
+			}
+
+			//if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {					//Release Button
+			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
+
+				jumpTimeCounter = 0;															//when stop pressing stop jumping
+				isJumping = false;
+
+			}
+		}
+
+		if (isOnGround) {																//if again on Ground reset Counter
+
+			jumpTimeCounter = jumpTime;
+
+		}
+		
+				
 		playerAnimator.SetBool ("IsOnGround", isOnGround); // connect Animator parameter to our variable isOnGround
+	}
 
-			}
 
+	/*
+	 * Predefined unity function, used to recognize if 2 colliders touch each other
+	 * Here: if player falls down and dies
+	 */
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.tag == "killbox") {
 			Debug.Log ("Player dead");							//Console shows Player dead
 			gameManager.RestartGame ();							//Restart method from GameManager
-			moveSpeed = moveSpeedStore;							//set the moveSpeed back		
-			speedUpPoint = speedUpPointStore;					//set the speedUpPoint back
+			moveSpeed = moveSpeedStore;							//reset the moveSpeed		
+			speedUpPoint = speedUpPointStore;					//reset the speedUpPoint
 			countSpeedIncreases = countSpeedIncreasesStore;
 		}
 	}
