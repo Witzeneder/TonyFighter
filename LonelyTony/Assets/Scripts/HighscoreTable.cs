@@ -32,19 +32,19 @@ public class HighscoreTable : MonoBehaviour {
 		thirdname.text = PlayerPrefs.GetString ("third");
 
 		if(PlayerPrefs.HasKey("first")) {
-			first = PlayerPrefs.GetInt("first");
+			first = PlayerPrefs.GetInt(PlayerPrefs.GetString("first"));
+			firstpoint.text = first.ToString();
 		}
 		if(PlayerPrefs.HasKey("second")) {
-			second = PlayerPrefs.GetInt("second");
+			second = PlayerPrefs.GetInt(PlayerPrefs.GetString("second"));
+			secondpoint.text = second.ToString();
 		}
-		if(PlayerPrefs.HasKey("second")) {
-			third = PlayerPrefs.GetInt("second");
+		if(PlayerPrefs.HasKey("third")) {
+			third = PlayerPrefs.GetInt(PlayerPrefs.GetString("third"));
+			thirdpoint.text = third.ToString();
 		}
 			
 
-		firstpoint.text = first.ToString();
-		secondpoint.text = second.ToString();
-		thirdpoint.text = third.ToString();
 	}
 	
 	// Update is called once per frame

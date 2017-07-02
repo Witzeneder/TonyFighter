@@ -17,6 +17,12 @@ public class ButtonManager : MonoBehaviour {
 		SceneManager.LoadScene (highscore);
 	}
 
+	public void HighscoreBack(string menu)
+	{
+
+		SceneManager.LoadScene (menu);
+	}
+
     public void LevelButton(string level)
     {
 

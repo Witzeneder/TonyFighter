@@ -34,46 +34,47 @@ public class GameOverMenu : MonoBehaviour {
 
 
 
-		if (first == null) {
-			first = name;
+		if (PlayerPrefs.GetString("first") == null) {
+			PlayerPrefs.SetString ("first", name);
 			PlayerPrefs.SetInt (name, actualScore);
 		} else {
-			if (PlayerPrefs.GetInt (first) >= actualScore) {
-				if (second == null) {
-					second = name;
+			if (PlayerPrefs.GetInt (PlayerPrefs.GetString("first")) >= actualScore) {
+				if (PlayerPrefs.GetString("second") == null) {
+					PlayerPrefs.SetString ("second", name);
 					PlayerPrefs.SetInt (name, actualScore);
 				} else { // second != null
-					if (PlayerPrefs.GetInt (second) >= actualScore) {
-						if (third == null) {
-							third = name;
+					if (PlayerPrefs.GetInt (PlayerPrefs.GetString("second")) >= actualScore) {
+						if (PlayerPrefs.GetString("third") == null) {
+							PlayerPrefs.SetString("third", name);
 							PlayerPrefs.SetInt (name, actualScore);
 						} else {
-							if (PlayerPrefs.GetInt (third) < actualScore) {
-								third = name;
+							if (PlayerPrefs.GetInt (PlayerPrefs.GetString("third")) < actualScore) {
+								PlayerPrefs.SetString("third", name);
 								PlayerPrefs.SetInt (name, actualScore);
 							}
 						}
 					} else {// names[1] < actualScore
-						third = second;
-						second = name;
+						PlayerPrefs.SetString("third", PlayerPrefs.GetString("second"));	//third = second;
+						PlayerPrefs.SetString("second", name);								//second = name;
 						PlayerPrefs.SetInt (name, actualScore);
 					}
 				}
 			} else {//names[0] < actualScore
-				if (second != null) {
-					third = second;
+				if (PlayerPrefs.GetString("second") != null) {
+					PlayerPrefs.SetString("third", PlayerPrefs.GetString("second"));		//third = second;
 				}
-				second = first;
-				first = name;
+				PlayerPrefs.SetString("second", PlayerPrefs.GetString("first"));			//second = first;
+				PlayerPrefs.SetString("third", name);										//first = name;
 				PlayerPrefs.SetInt (name, actualScore);
 			}
 
 
 		}
 
-		PlayerPrefs.SetString ("first", first);
-		PlayerPrefs.SetString ("second", second);
-		PlayerPrefs.SetString ("third", third);
+//		PlayerPrefs.SetString ("first", first);
+//		PlayerPrefs.SetString ("second", second);
+//		PlayerPrefs.SetString ("third", third);
+		Debug.Log(PlayerPrefs.GetInt(PlayerPrefs.GetString("first")));
 
 
 
