@@ -12,5 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/endless.unity
     guid: 181fb2133d0152946a1235dd610ba091
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/leveljs.unity
     guid: f78c89f43954ce642b5388cb577ec670
+=======
+    path: Assets/Scenes/highscore.unity
+    guid: 00000000000000000000000000000000
+>>>>>>> 832dcaf371d6041fc05941ce82f689a0671bf356
