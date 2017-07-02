@@ -65,6 +65,7 @@ public class PlayerControllerJS : MonoBehaviour
 
                 if (Input.GetTouch(0).position.x > 960)
                 {
+                    moveSpeedLeft = 0;
                     if (moveSpeedRight < maxMoveSpeed)
                     {
                         moveSpeedRight += 0.1f;
@@ -75,6 +76,7 @@ public class PlayerControllerJS : MonoBehaviour
                 }
                 else
                 {
+                    moveSpeedRight = 0;
                     if (moveSpeedLeft < maxMoveSpeed)
                     {
                         moveSpeedLeft += 0.1f;
@@ -86,8 +88,6 @@ public class PlayerControllerJS : MonoBehaviour
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                moveSpeedLeft = 0;
-                moveSpeedRight = 0;
                 if (!isOnGround)
                 {
                     endedMovInJump = true;
