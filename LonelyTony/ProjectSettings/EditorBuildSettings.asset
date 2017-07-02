@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/endless.unity
     guid: 181fb2133d0152946a1235dd610ba091
+  - enabled: 1
+    path: Assets/Scenes/highscore.unity
+    guid: 00000000000000000000000000000000

@@ -11,6 +11,12 @@ public class ButtonManager : MonoBehaviour {
         SceneManager.LoadScene(endlessGame);
     }
 
+	public void showHighscore(string highscore)
+	{
+
+		SceneManager.LoadScene (highscore);
+	}
+
     public void LevelButton(string level)
     {
 
