@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 400874681}
   - component: {fileID: 400874679}
   - component: {fileID: 400874680}
+  - component: {fileID: 400874682}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -211,8 +212,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2739839a51ce44d8b7826d16c7f6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  maxMoveSpeed: 10
   jumpForce: 5
+  isOnGround: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!61 &400874681
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -238,6 +243,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 2.56}
   m_EdgeRadius: 0
+--- !u!95 &400874682
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 400874676}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8f52715709e1fc4296c35335a25f6d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &425477301
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +334,7 @@ GameObject:
   - component: {fileID: 578070835}
   - component: {fileID: 578070834}
   - component: {fileID: 578070833}
+  - component: {fileID: 578070838}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -389,6 +412,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &578070838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578070832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d182df93efac3547925fdcda5221171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &750808861
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 750808863}
   - component: {fileID: 750808862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810624495}
   - component: {fileID: 810624494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1411226115}
   - component: {fileID: 1411226114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1777581937}
   - component: {fileID: 1777581938}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plattform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,8 +654,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1777581936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43647, y: 0.278, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 52.31, y: 1.88, z: 0}
+  m_LocalScale: {x: 8, y: 1, z: 1}
   m_Children:
   - {fileID: 1411226115}
   - {fileID: 810624495}
