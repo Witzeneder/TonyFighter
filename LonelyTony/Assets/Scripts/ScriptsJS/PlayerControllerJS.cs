@@ -68,7 +68,7 @@ public class PlayerControllerJS : MonoBehaviour
                 Debug.Log("touched");
                 
 
-                if (Input.GetTouch(0).position.x > 960)
+                if (Input.GetTouch(0).position.x > Screen.width/2)
                 {
                     moveSpeedLeft = 0;
                     if (moveSpeedRight < maxMoveSpeed)
