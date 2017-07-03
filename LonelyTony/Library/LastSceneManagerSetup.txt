@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/floorislava.unity
-=======
-- path: Assets/Scenes/leveljs.unity
->>>>>>> 2533eec40839e73a5ed7064537c8cf2b63543e66
+- path: Assets/Scenes/menu.unity
   isLoaded: 1
   isActive: 1
