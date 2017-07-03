@@ -14,6 +14,9 @@ public class PlayerControllerJS : MonoBehaviour
 
     public bool isOnGround;
     public LayerMask whatIsGround;
+    public Transform checkGround;
+    public float checkGroundRadius;
+
     private Collider2D myCollider;
 
     private Rigidbody2D myRigitBody;
@@ -22,13 +25,15 @@ public class PlayerControllerJS : MonoBehaviour
 
     private bool endedMovInJump;
 
+    public GameManagerJS gameManagerJS;
+
 
     // Use this for initialization
     void Start()
     {
 
         myRigitBody = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<Collider2D>();
+        //myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         moveSpeedLeft = 0;
         moveSpeedRight = 0;
@@ -39,7 +44,7 @@ public class PlayerControllerJS : MonoBehaviour
     void Update()
     {
 
-        isOnGround = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
+        isOnGround = Physics2D.OverlapCircle(checkGround.position, checkGroundRadius, whatIsGround);
         if (isOnGround)
         {
             if (endedMovInJump)
@@ -107,5 +112,27 @@ public class PlayerControllerJS : MonoBehaviour
 
 
         myAnimator.SetBool("IsOnGround", isOnGround);
+    }
+
+    /*
+	 * Predefined unity function, used to recognize if 2 colliders touch each other
+	 * Here: if player falls down and dies
+	 */
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "killbox")
+        {
+            Debug.Log("Player dead");                           //Console shows Player dead
+            gameManagerJS.RestartGame();                          //Restart method from GameManager
+            moveSpeedLeft = 0;
+            moveSpeedRight = 0;//reset the moveSpeed        
+        }
+
+        else if(other.gameObject.tag == "WinBox")
+        {
+            gameManagerJS.finishGame();
+            moveSpeedRight = 0;
+            moveSpeedLeft = 0;
+        }
     }
 }
