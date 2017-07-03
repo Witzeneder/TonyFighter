@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/endlessEnemy.unity
-=======
-- path: Assets/Scenes/endless.unity
->>>>>>> 7a2aa13da7403a4b2dfda7ec3978c10646ea7d1b
+- path: Assets/Scenes/floorislava.unity
   isLoaded: 1
   isActive: 1
