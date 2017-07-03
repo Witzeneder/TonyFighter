@@ -1,4 +1,20 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/options.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/floorislava.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/highscore.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/endlessEnemy.unity
+=======
+- path: Assets/Scenes/endless.unity
+>>>>>>> 7a2aa13da7403a4b2dfda7ec3978c10646ea7d1b
+>>>>>>> fdce6a3d53c521acc087745a831ec79f964b1fe9
+>>>>>>> 3e30bcd5f816cdbb0b29404bcc99db1f5c374920
+>>>>>>> ada7ba2bc641935bae34174d5eafc47eeda4e416
   isLoaded: 1
   isActive: 1
