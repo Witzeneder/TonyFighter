@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollower : MonoBehaviour {
+public class CameraFol : MonoBehaviour {
 
-	public PlayerController player;
+	public PlayerControl player;
 
 	private Vector3 previousPlayerPosition; // x, y, z values
 	private Vector3 currentPlayerPosition; // x, y, z values
@@ -14,10 +14,10 @@ public class CameraFollower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = FindObjectOfType<PlayerController> ();	// initialize player object
+		player = FindObjectOfType<PlayerControl> ();	// initialize player object
 		previousPlayerPosition = player.transform.position;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -27,6 +27,7 @@ public class CameraFollower : MonoBehaviour {
 		transform.position = new Vector3 (transform.position.x + moveDistance, transform.position.y, transform.position.z); // don't change y and z
 
 		previousPlayerPosition = player.transform.position;
-		
+
 	}
 }
+
