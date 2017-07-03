@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/endless.unity
+=======
+- path: Assets/Scenes/floorislava.unity
+>>>>>>> 7d26c7156bda169cf722fe6f1ded1740988547b1
   isLoaded: 1
   isActive: 1
