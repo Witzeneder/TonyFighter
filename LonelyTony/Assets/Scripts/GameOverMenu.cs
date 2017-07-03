@@ -24,11 +24,12 @@ public class GameOverMenu : MonoBehaviour {
 		//highscoreNames = new string[3];
 		actualScore = (int)score.scoreCount;
 		actualHighscore = (int)score.highscoreCount;
-		Debug.Log (actualScore);
-		Debug.Log (actualHighscore);
+		//Debug.Log (actualScore);
+		//Debug.Log (actualHighscore);
 
 		if (actualScore == actualHighscore) {
-			highscoreEntry.gameObject.SetActive (true);
+			Debug.Log (actualScore);
+			Debug.Log (actualHighscore);
 		}
 	}
 
@@ -48,8 +49,8 @@ public class GameOverMenu : MonoBehaviour {
         //highscoreNames = new string[3];
         actualScore = (int)score.scoreCount;
         actualHighscore = (int)score.highscoreCount;
-        Debug.Log(actualScore);
-        Debug.Log(actualHighscore);
+        //Debug.Log(actualScore);
+        //Debug.Log(actualHighscore);
 
         if (actualScore == actualHighscore)
         {

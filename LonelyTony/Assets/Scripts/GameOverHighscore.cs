@@ -20,10 +20,10 @@ public class GameOverHighscore : MonoBehaviour {
 		
 	}
 
+
 	public void HighscoreBoard(string name) {
 			actualScore = (int)score.scoreCount;
 			actualHighscore = (int)score.highscoreCount;
-			Debug.Log (name);
 			Debug.Log (actualScore);
 			Debug.Log (actualHighscore);
 			PlayerPrefs.SetInt ("endlessFirstPoints", actualHighscore);

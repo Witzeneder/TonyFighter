@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour {
 
-	public PlayerController player;
+	public PlayerControl player;
 
 	private Vector3 previousPlayerPosition; // x, y, z values
 	private Vector3 currentPlayerPosition; // x, y, z values
@@ -14,7 +14,7 @@ public class CameraFollower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = FindObjectOfType<PlayerController> ();	// initialize player object
+		player = FindObjectOfType<PlayerControl> ();	// initialize player object
 		previousPlayerPosition = player.transform.position;
 	}
 	
