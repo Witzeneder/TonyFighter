@@ -78,8 +78,12 @@ public class PlayerControl : MonoBehaviour {
 		if (other.gameObject.tag == "killbox") {
 			Debug.Log ("Player dead");							//Console shows Player dead
 			gamemanag.RestartGame();
-		
 		}
+		if (other.gameObject.tag == "WinBox") {
+			Debug.Log ("Player wins");							//Console shows Player dead
+			gamemanag.RestartGameWin();
+		}
+
 	}
 	}
 
