@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour {
+
 
 
 	public void ToggleMusicChanged (bool isTicked) {
@@ -16,18 +18,13 @@ public class OptionsMenu : MonoBehaviour {
 
 	}
 
+
+
+
 	public void GoBackToMain () {
 		SceneManager.LoadScene ("menu");
 	}
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

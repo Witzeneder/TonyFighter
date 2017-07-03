@@ -1,12 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/highscore.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/endlessEnemy.unity
-=======
-- path: Assets/Scenes/endless.unity
->>>>>>> 7a2aa13da7403a4b2dfda7ec3978c10646ea7d1b
->>>>>>> fdce6a3d53c521acc087745a831ec79f964b1fe9
+- path: Assets/Scenes/options.unity
   isLoaded: 1
   isActive: 1
