@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -121,7 +121,7 @@ MonoBehaviour:
   - {fileID: 13}
   - {fileID: 18}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
     y: 0
     width: 1280
     height: 637
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_LastProjectPath: C:\Users\Jakob\Desktop\FH\2 Semester\Semesterprojekt\LonelyTony\LonelyTony
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 23}
+    scrollPos: {x: 0, y: 91}
     m_SelectedIDs: c0250000
     m_LastClickedID: 9664
     m_ExpandedIDs: 00000000f4240000f625000092260000ffffff7f
@@ -445,7 +445,7 @@ MonoBehaviour:
     y: 92
     width: 275
     height: 566
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 357.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 160
@@ -480,9 +480,9 @@ MonoBehaviour:
     height: 295
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ec280000
-    m_LastClickedID: 10476
-    m_ExpandedIDs: 36f8ffff54f9ffffa2faffffdcfbffff00000000f427000088280000da280000
+    m_SelectedIDs: aa3a0000
+    m_LastClickedID: 15018
+    m_ExpandedIDs: 26daffffcedbffff72f0ffffeef1ffff66f2ffff34f3ffff46f3ffff54f3ffff58f3ffff8cfaffffa4faffffaefaffffdcfbffff000000006a340000a43400001439000066390000c83a0000083b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -501,7 +501,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 0}
     m_SearchString: 
   m_ExpandedScenes:
-  - highscore
+  - endlessEnemy
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 718
-    width: 1366
-    height: 308
+    x: 0
+    y: 408
+    width: 1001
+    height: 250

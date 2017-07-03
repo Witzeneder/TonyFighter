@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/highscore.unity
+- path: Assets/Scenes/endlessEnemy.unity
   isLoaded: 1
   isActive: 1
