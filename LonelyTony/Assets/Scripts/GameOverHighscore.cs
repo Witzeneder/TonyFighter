@@ -22,14 +22,17 @@ public class GameOverHighscore : MonoBehaviour {
 
 
 	public void HighscoreBoard(string name) {
-			actualScore = (int)score.scoreCount;
-			actualHighscore = (int)score.highscoreCount;
-			Debug.Log (actualScore);
-			Debug.Log (actualHighscore);
-			PlayerPrefs.SetInt ("endlessFirstPoints", actualHighscore);
-			PlayerPrefs.SetString ("endlessFirstName", name);
-			input.text = "";
-			}
+		actualScore = (int)score.scoreCount;
+		actualHighscore = (int)score.highscoreCount;
+		Debug.Log (actualScore);
+		Debug.Log (actualHighscore);
+		PlayerPrefs.SetInt ("endlessFirstPoints", actualHighscore);
+		PlayerPrefs.SetString ("endlessFirstName", name);
+		input.text = name;
+
+	}
+
+
 
 
 
