@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour {
 	 * Resets the all game elements so that it can start again from the beginning
 	 */
 	public void Reset() {
-		gameOverMenu.gameObject.SetActive(false);						//hide game over menu
+		gameOverMenu.gameObject.SetActive(false);//hide game over menu
 
-		generatedPlatforms = FindObjectsOfType<PlatformDestroyer>();
+        gameOverMenu.highscoreEntry.gameObject.SetActive(false);    
+
+
+        generatedPlatforms = FindObjectsOfType<PlatformDestroyer>();
 		for (int i = 0; i < generatedPlatforms.Length; i++) {
 			generatedPlatforms[i].gameObject.SetActive(false);			//make the object disappear
 		}//end for

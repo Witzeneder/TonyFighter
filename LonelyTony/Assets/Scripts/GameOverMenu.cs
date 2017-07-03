@@ -42,5 +42,21 @@ public class GameOverMenu : MonoBehaviour {
 
 	}
 
+    private void Update()
+    {
+        score = FindObjectOfType<ScoreManager>();
+        //highscoreNames = new string[3];
+        actualScore = (int)score.scoreCount;
+        actualHighscore = (int)score.highscoreCount;
+        Debug.Log(actualScore);
+        Debug.Log(actualHighscore);
+
+        if (actualScore == actualHighscore)
+        {
+            highscoreEntry.gameObject.SetActive(true);
+        }
+
+    }
+
 
 }
