@@ -1,4 +1,24 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/options.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/levelmenu.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/menu.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/endless.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/endless.unity
+=======
+- path: Assets/Scenes/floorislava.unity
+>>>>>>> 7d26c7156bda169cf722fe6f1ded1740988547b1
+>>>>>>> e8e49b912ccc9c51f6020dbc388ceba4d6ae5c6e
+>>>>>>> 40369e797d7041e4755d9f51e902311337f45c4c
+>>>>>>> 87a42a19915e932b338818ecfa59a54d5365ace6
+>>>>>>> 98a5adeb0689a58e21f3383a7614a72fc6788c21
   isLoaded: 1
   isActive: 1
