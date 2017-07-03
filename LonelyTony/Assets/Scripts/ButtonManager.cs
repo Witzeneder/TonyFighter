@@ -29,6 +29,11 @@ public class ButtonManager : MonoBehaviour {
         SceneManager.LoadScene(level);
     }
 
+	public void OptionsButton(string options) 
+	{
+		SceneManager.LoadScene(options);
+	}
+
     public void ExitAppButton()
     {
         Application.Quit();
