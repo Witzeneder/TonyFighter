@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/highscore.unity
-=======
-- path: Assets/Scenes/leveljs.unity
->>>>>>> e341e1ceeb3048bf6e77400e03c52bbcec1624ad
+- path: Assets/Scenes/endless.unity
   isLoaded: 1
   isActive: 1
