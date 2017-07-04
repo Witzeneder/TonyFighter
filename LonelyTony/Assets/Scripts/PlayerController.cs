@@ -87,9 +87,9 @@ public class PlayerController : MonoBehaviour {
 	
 
 		//if Space is pressed or Mouse is pressed -> Jump
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonDown (0)) {				//Click Button
-		//if (Input.touchCount > 0 ) {
-			//if (Input.GetTouch (0).phase == TouchPhase.Began ) {
+		//if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonDown (0)) {				//Click Button
+		if (Input.touchCount > 0 ) {
+			if (Input.GetTouch (0).phase == TouchPhase.Began ) {
 
 				if (isOnGround) {
 					myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);
@@ -98,8 +98,8 @@ public class PlayerController : MonoBehaviour {
 
 			}
 
-			if ((Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) && isJumping) {			//pressed Button
-			//if ((Input.GetTouch (0).phase == TouchPhase.Moved || Input.GetTouch (0).phase == TouchPhase.Stationary) && isJumping) {
+			//if ((Input.GetKey (KeyCode.Space) || Input.GetMouseButton (0)) && isJumping) {			//pressed Button
+			if ((Input.GetTouch (0).phase == TouchPhase.Moved || Input.GetTouch (0).phase == TouchPhase.Stationary) && isJumping) {
 
 				if (jumpTimeCounter > 0) {
 					myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);		//if pressed longer you can continue jumping
@@ -107,14 +107,14 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 
-			if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {					//Release Button
-			//if (Input.GetTouch (0).phase == TouchPhase.Ended) {
+			//if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {					//Release Button
+			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
 
 				jumpTimeCounter = 0;															//when stop pressing stop jumping
 				isJumping = false;
 
 			}
-		//}
+		}
 
 		if (isOnGround) {																//if again on Ground reset Counter
 
