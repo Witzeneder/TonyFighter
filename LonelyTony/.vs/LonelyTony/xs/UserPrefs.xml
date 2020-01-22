@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{FA6A2E09-CC45-FAA6-2BF3-570A7E526F6A}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PowerUpSpawner.cs">
+    <Files>
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="82" Column="10" />
+      <File FileName="Assets/Scripts/PowerUpSpawner.cs" Line="9" Column="23" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="LonelyTony" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="PowerUpSpawner.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9b67865a-3468-4d7d-ace2-86f845b763e7" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
