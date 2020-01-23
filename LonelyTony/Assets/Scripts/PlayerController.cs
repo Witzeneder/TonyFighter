@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : NetworkBehaviour {
 
 	public float moveSpeed;						//Speed of the Player
 	public float jumpForce;					//Jump Height of the Player
@@ -11,8 +12,6 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D myRigidbody;		//Object this script is working with
     private Animator animator;
     private bool facesRight;
-    public GameObject groundCheckGameObject;
-    private float groundThreshold;
 
     public GameObject Bullet_Emitter;
     public GameObject Bullet;
@@ -25,16 +24,26 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         facesRight = true;
         myRigidbody = GetComponent<Rigidbody2D> (); //Get the Player Object
         animator = GetComponent<Animator>();
-        groundThreshold = groundCheckGameObject.transform.position.y;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+
         if (bulletReloadTime > 0f)
         {
             bulletReloadTime -= Time.deltaTime;
@@ -80,7 +89,7 @@ public class PlayerController : MonoBehaviour {
             }
 
         }
-        else if (groundCheckGameObject.transform.position.y <= groundThreshold)
+        else if (transform.position.y <= -2.4f)
         {
             animator.Play("Empty_State");
         }
