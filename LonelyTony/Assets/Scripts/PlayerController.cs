@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject Bullet_Emitter;
     public GameObject Bullet;
     public float Bullet_Force;
-    public float reloadTime = 2f;
+    public float reloadTime = 2.5f;
     private float bulletReloadTime;
 
 	//-------------------------------------------------------------------------------------------------------//
@@ -141,9 +141,9 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.name == "bulletPowerUp(Clone)")
         {
             reloadTime -= 0.5f;
-            if (reloadTime < 0)
+            if (reloadTime < 0.5f)
             {
-                reloadTime = 0f;
+                reloadTime = 0.5f;
             }
             bulletReloadTime = 0f;
             Destroy(collision.gameObject);

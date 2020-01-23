@@ -1,8 +1,7 @@
 ﻿<Properties StartupConfiguration="{FA6A2E09-CC45-FAA6-2BF3-570A7E526F6A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PowerUpSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerController.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="82" Column="10" />
-      <File FileName="Assets/Scripts/PowerUpSpawner.cs" Line="9" Column="23" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="20" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +9,7 @@
           <Node name="LonelyTony" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="PowerUpSpawner.cs" selected="True" />
+                <Node name="PlayerController.cs" selected="True" />
               </Node>
             </Node>
           </Node>
