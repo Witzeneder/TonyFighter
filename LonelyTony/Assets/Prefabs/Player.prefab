@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 2622833841941611403}
   - component: {fileID: -5243903473313856970}
   - component: {fileID: -8648020756380160504}
+  - component: {fileID: 8550457973122847016}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -277,9 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d6c522af31447398568cc65334232b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.033333335
-  m_SyncRotationAxis: 3
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.06666667
+  m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
@@ -287,3 +288,23 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &8550457973122847016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2622833841941611509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18e15ed5495c434d969378156376a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 2622833841941611403}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
