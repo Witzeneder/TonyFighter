@@ -13,8 +13,11 @@ public class PlayerController : NetworkBehaviour {
     private Animator animator;
     private bool facesRight;
 
-    public GameObject Bullet_Emitter;
-    public GameObject Bullet;
+    public Transform Bullet_Emitter;
+    public GameObject bulletPrefab;
+    public Vector2 bulletForce;
+    public Vector2 bulletOffset = new Vector2(0.4f, 0.1f);
+    private bool canShoot = true;
     public float Bullet_Force;
     public float reloadTime = 2.5f;
     private float bulletReloadTime;
@@ -22,7 +25,7 @@ public class PlayerController : NetworkBehaviour {
 	//-------------------------------------------------------------------------------------------------------//
 
 	// Use this for initialization
-	void Start () {
+    private void Start () {
 
         if (!isLocalPlayer)
         {
@@ -35,7 +38,7 @@ public class PlayerController : NetworkBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
         if (!isLocalPlayer)
@@ -69,7 +72,8 @@ public class PlayerController : NetworkBehaviour {
                 {
                     if (bulletReloadTime < 0.01f)
                     {
-                        fireShot();
+                        //fireShot();
+                        CmdFire();
                         bulletReloadTime = reloadTime;
                     }
                     actionProcessed = true;
@@ -99,11 +103,17 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        //Do some local player stuff like coloring here
+    }
+
     public void moveLeft()
     {
         if (facesRight)
         {
-            myRigidbody.transform.Rotate(0f, 180f, 0f);
+           CmdRotatePlayer();
         }
         facesRight = false;
         myRigidbody.transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
@@ -114,7 +124,7 @@ public class PlayerController : NetworkBehaviour {
     {
         if (!facesRight)
         {
-            myRigidbody.transform.Rotate(0f, 180f, 0f);
+            CmdRotatePlayer();
         }
         facesRight = true;
         myRigidbody.transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
@@ -127,13 +137,26 @@ public class PlayerController : NetworkBehaviour {
         animator.Play("Player_Jump");
     }
 
-    public void fireShot()
+    [Command]
+    private void CmdRotatePlayer()
     {
-        GameObject bullet = Instantiate(Bullet, Bullet_Emitter.transform.position,Bullet_Emitter.transform.rotation) as GameObject;
+        myRigidbody.transform.Rotate(0f, 180f, 0f);
+    }
 
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        bulletRigidbody.AddForce(transform.right * Bullet_Force);
-        Destroy(bullet, 1.5f);
+    [Command]
+    private void CmdFire()
+    {
+        //TODO: play fire sound
+        
+        //TODO: modify damage
+        
+        //TODO: set other properties like bouncy
+
+        GameObject bullet = Instantiate(bulletPrefab, Bullet_Emitter.position, Bullet_Emitter.rotation);
+        
+        bullet.GetComponent<Bullet>().Config(gameObject, 5, false, 1.5f);
+        bullet.GetComponent<Rigidbody2D>().velocity = bulletForce.x * transform.right;
+        NetworkServer.Spawn(bullet);
     }
    
     /*
@@ -164,6 +187,10 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
+    public void takeDamage(int amount)
+    {
+        Debug.Log(amount + " damage taken!");
+    }
 
 }
 

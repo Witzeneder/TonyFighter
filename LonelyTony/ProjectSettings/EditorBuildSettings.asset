@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/JoinGame.unity
+    guid: 84e059ad5ca004e68a2ec3e277e2d9e8
+  - enabled: 1
     path: Assets/Scenes/endless.unity
     guid: 181fb2133d0152946a1235dd610ba091
   - enabled: 0
