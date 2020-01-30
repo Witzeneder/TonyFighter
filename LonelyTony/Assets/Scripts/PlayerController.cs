@@ -20,13 +20,27 @@ public class PlayerController : NetworkBehaviour {
     public float Bullet_Force;
     public float reloadTime = 2.5f;
     private float bulletReloadTime;
+    
+    public const int maxHealth = 10;
+    [SyncVar(hook = "OnChangeHealth")]
+    public int currentHealth = maxHealth;
+
+    public GameObject healthBar;
+    
 
 	//-------------------------------------------------------------------------------------------------------//
 
 	// Use this for initialization
-    private void Start () {
+    private void Start ()
+    {
 
         myRigidbody = GetComponent<Rigidbody2D>(); //Get the Player Object
+
+        if (myRigidbody.position.x > 0)
+        {
+            myRigidbody.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+        }
+        
         if (!isLocalPlayer)
         {
             return;
@@ -41,13 +55,12 @@ public class PlayerController : NetworkBehaviour {
     // Update is called once per frame
     private void Update()
     {
-        Debug.Log(myRigidbody.velocity);
 
-        if (myRigidbody.velocity.x > 0)
+        if (myRigidbody.velocity.x > 0.0f)
         {
             myRigidbody.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
         }
-        else if (myRigidbody.velocity.x < 0)
+        else if (myRigidbody.velocity.x < 0.0f)
         {
             myRigidbody.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
         }
@@ -96,12 +109,10 @@ public class PlayerController : NetworkBehaviour {
             {
                 if (Input.mousePosition.x > Screen.width * 0.5f)
                 {
-                    Debug.Log("MOVE_RIGHT");
                     MoveRight();
                 }
                 else
                 {
-                    Debug.Log("MOVE_LEFT");
                     MoveLeft();
                 }
             }
@@ -120,7 +131,7 @@ public class PlayerController : NetworkBehaviour {
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-        //Do some local player stuff like coloring here
+        healthBar.GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     public void MoveLeft()
@@ -154,7 +165,7 @@ public class PlayerController : NetworkBehaviour {
 
         GameObject bullet = Instantiate(bulletPrefab, Bullet_Emitter.position, Bullet_Emitter.rotation);
         
-        bullet.GetComponent<Bullet>().Config(gameObject, 5, false, 1.5f);
+        bullet.GetComponent<Bullet>().Config(gameObject, 1, false, 3f);
         bullet.GetComponent<Rigidbody2D>().velocity = bulletForce.x * transform.right;
         NetworkServer.Spawn(bullet);
     }
@@ -187,9 +198,30 @@ public class PlayerController : NetworkBehaviour {
         }
     }
 
-    public void takeDamage(int amount)
+    public void TakeDamage(int amount)
     {
-        Debug.Log(amount + " damage taken!");
+
+        if (!isServer)
+        {
+            return;
+        }
+
+        currentHealth -= amount;
+             
+        Debug.Log("health: " + currentHealth);
+        if (currentHealth <= 0)
+        {
+            Debug.Log("dead: " + currentHealth);
+        }
+        
+       
+    }
+
+    void OnChangeHealth(int health)
+    {
+         //TODO: update healthbar
+         healthBar.transform.localScale = new Vector2(health / 10f, healthBar.transform.localScale.y);
+         
     }
 
 }

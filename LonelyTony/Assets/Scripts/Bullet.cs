@@ -26,38 +26,22 @@ public class Bullet : NetworkBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         
-        Debug.Log("hit something");
-        
-        if (!NetworkServer.active)
-        {
-            return;
-        }
-
-        if (destroyed)
-        {
-            return;
-        }
-
-        Ground ground = other.gameObject.GetComponent<Ground>();
-        if (ground != null)
-        {
-            Destroy(gameObject);
-        }
-        
+        Debug.Log("hit");
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
         if (player != null)
         {
             
-            Debug.Log("Player hit!");
             if (player != _owner)
             {
-                player.takeDamage(_damage);
-                Destroy(gameObject);
+                player.TakeDamage(_damage);
             }
+            Destroy(gameObject);
         }
+        
+        
     }
 
     private void OnDestroy()
