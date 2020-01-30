@@ -1,7 +1,10 @@
 ﻿<Properties StartupConfiguration="{FA6A2E09-CC45-FAA6-2BF3-570A7E526F6A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Bullet.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="94" Column="42" />
+      <File FileName="Library/PackageCache/com.unity.multiplayer-hlapi@1.0.2/Runtime/ClientScene.cs" Line="848" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="61" Column="1" />
+      <File FileName="Assets/Scripts/PowerUpSpawner.cs" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="30" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,7 +12,7 @@
           <Node name="LonelyTony" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="PlayerController.cs" selected="True" />
+                <Node name="Bullet.cs" selected="True" />
               </Node>
             </Node>
           </Node>

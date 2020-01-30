@@ -622,10 +622,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 3a6cc071-10de-4eb6-9213-f6ce9d31cd46
+  cloudProjectId: 503d7b3b-1e21-4844-b1a1-31e5039ad071
   framebufferDepthMemorylessMode: 0
-  projectName: LonelyTony
-  organizationId: dkroeg
+  projectName: LonelyTony (1)
+  organizationId: jahavastudios
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

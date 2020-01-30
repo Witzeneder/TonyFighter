@@ -11,7 +11,6 @@ public class PlayerController : NetworkBehaviour {
 
 	private Rigidbody2D myRigidbody;		//Object this script is working with
     private Animator animator;
-    private bool facesRight;
 
     public Transform Bullet_Emitter;
     public GameObject bulletPrefab;
@@ -27,19 +26,32 @@ public class PlayerController : NetworkBehaviour {
 	// Use this for initialization
     private void Start () {
 
+        myRigidbody = GetComponent<Rigidbody2D>(); //Get the Player Object
         if (!isLocalPlayer)
         {
             return;
         }
 
-        facesRight = true;
-        myRigidbody = GetComponent<Rigidbody2D> (); //Get the Player Object
+
+        
         animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     private void Update()
     {
+        Debug.Log(myRigidbody.velocity);
+
+        if (myRigidbody.velocity.x > 0)
+        {
+            myRigidbody.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+        }
+        else if (myRigidbody.velocity.x < 0)
+        {
+            myRigidbody.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+        }
+
 
         if (!isLocalPlayer)
         {
@@ -84,16 +96,18 @@ public class PlayerController : NetworkBehaviour {
             {
                 if (Input.mousePosition.x > Screen.width * 0.5f)
                 {
-                    moveRight();
+                    Debug.Log("MOVE_RIGHT");
+                    MoveRight();
                 }
                 else
                 {
-                    moveLeft();
+                    Debug.Log("MOVE_LEFT");
+                    MoveLeft();
                 }
             }
 
         }
-        else if (transform.position.y <= -2.4f)
+        else if (myRigidbody.transform.position.y <= -2.4f)
         {
             animator.Play("Empty_State");
         }
@@ -109,25 +123,15 @@ public class PlayerController : NetworkBehaviour {
         //Do some local player stuff like coloring here
     }
 
-    public void moveLeft()
+    public void MoveLeft()
     {
-        if (facesRight)
-        {
-           CmdRotatePlayer();
-        }
-        facesRight = false;
-        myRigidbody.transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+        myRigidbody.AddForce(Vector2.left * moveSpeed * Time.deltaTime * 60);
         animator.Play("Player_Run");
     }
 
-    public void moveRight()
+    public void MoveRight()
     {
-        if (!facesRight)
-        {
-            CmdRotatePlayer();
-        }
-        facesRight = true;
-        myRigidbody.transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+        myRigidbody.AddForce(Vector2.right * moveSpeed * Time.deltaTime * 60);
         animator.Play("Player_Run");
     }
 
@@ -137,11 +141,7 @@ public class PlayerController : NetworkBehaviour {
         animator.Play("Player_Jump");
     }
 
-    [Command]
-    private void CmdRotatePlayer()
-    {
-        myRigidbody.transform.Rotate(0f, 180f, 0f);
-    }
+
 
     [Command]
     private void CmdFire()
