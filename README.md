@@ -17,3 +17,7 @@ https://drive.google.com/file/d/1TIlMbIlVVS6KKMWNLfEs72q_m6mFrVnV/view?usp=shari
 
 ### iOS Link
 will follow when apple approves
+
+
+Developed with / for iOS
+Tested with iOS and Android
